@@ -16,6 +16,10 @@
         double distance = Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
         return distance <= Radius + other.Radius && distance >= Math.Abs(Radius - other.Radius);
     }
+    public bool IsInside(Circle other)
+    {
+        double distance = Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
+        return distance + Radius <= other.Radius;
 }
 
 class Program
