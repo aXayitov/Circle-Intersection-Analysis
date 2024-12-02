@@ -22,6 +22,37 @@ class Program
 {
     static void Main()
     {
-        
+        List<Circle> circles = new List<Circle>
+        {
+            new Circle(0, 0, 3),
+            new Circle(4, 0, 2),
+            new Circle(2, 2, 1),
+            new Circle(10, 10, 2)
+        };
+
+        bool hasThreeIntersecting = false;
+        for (int i = 0; i < circles.Count; i++)
+        {
+            for (int j = i + 1; j < circles.Count; j++)
+            {
+                for (int k = j + 1; k < circles.Count; k++)
+                {
+                    if (circles[i].Intersects(circles[j]) &&
+                        circles[j].Intersects(circles[k]) &&
+                        circles[i].Intersects(circles[k]))
+                    {
+                        hasThreeIntersecting = true;
+                        Console.WriteLine($"Uchta kesishuvchi aylana: ({i + 1}, {j + 1}, {k + 1})");
+                        break;
+                    }
+                }
+                if (hasThreeIntersecting) break;
+            }
+            if (hasThreeIntersecting) break;
+        }
+
+        Console.WriteLine(hasThreeIntersecting
+            ? "Uchta kesishuvchi aylana bor."
+            : "Uchta kesishuvchi aylana yo'q.");
     }
 }
